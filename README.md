@@ -14,6 +14,6 @@ Shohay (সহায়) connects neighbours with local service drives: winter c
 ## Run locally
 ```
 npm install
-cp .env.example .env.local
+.env.local
 npm run dev
 ```
