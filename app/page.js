@@ -28,6 +28,29 @@ const gallery = [
   ["photo-1469571486292-0ba58a3f068b", "Children at a reading drive"],
   ["photo-1509099836639-18ba1795216d", "Community health camp"],
 ];
+
+const features = [
+  [
+    FiMapPin,
+    "Find drives nearby",
+    "Browse upcoming events by area and cause, from Mirpur to Mohammadpur.",
+  ],
+  [
+    FiHeart,
+    "Host your own",
+    "Post a distribution or cleanup in two minutes and let neighbours sign up.",
+  ],
+  [
+    FiUsers,
+    "Join in one tap",
+    "Sign up for an event and see everything you have committed to in one list.",
+  ],
+  [
+    FiCheckCircle,
+    "Always current",
+    "Events disappear the moment their date passes, so every card is still open.",
+  ],
+];
 const steps = [
   [
     FiSearch,
@@ -232,17 +255,17 @@ export default function Home() {
       <section className="mx-auto max-w-7xl px-4 pt-20">
         <h2 className="section-title">From our past drives</h2>
         <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3">
-          {gallery.map(([id, alt], i) => (
+          {gallery.map(([id, alt]) => (
             <figure
               key={id}
-              className={`group relative overflow-hidden rounded-box ${i === 0 ? "md:row-span-2" : ""}`}
+              className="group relative overflow-hidden rounded-box"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={IMG(id)}
                 alt={alt}
                 loading="lazy"
-                className={`w-full object-cover transition-transform duration-500 group-hover:scale-105 ${i === 0 ? "h-full min-h-64" : "aspect-[4/3]"}`}
+                className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-3 text-sm text-white">
                 {alt}

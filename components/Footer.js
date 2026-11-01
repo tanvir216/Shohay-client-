@@ -3,7 +3,7 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 import { Logo } from "./Navbar";
-import { EVENT_TYPES } from "@/lib/api";
+import { TYPE_META } from "@/lib/meta";
 
 export default function Footer() {
   return (
@@ -63,7 +63,7 @@ export default function Footer() {
         <div className="md:col-span-2">
           <h3 className="mb-3 text-lg font-semibold">Causes</h3>
           <ul className="space-y-2 opacity-80">
-            {EVENT_TYPES.map((t) => (
+            {Object.keys(TYPE_META)((t) => (
               <li key={t}>
                 <Link
                   href={`/events?type=${encodeURIComponent(t)}`}

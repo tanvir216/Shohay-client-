@@ -15,7 +15,8 @@ export default function Login() {
   const submit = async (e) => {
     e.preventDefault();
     const { email, password } = Object.fromEntries(new FormData(e.target));
-    if (!email || !password) return toast.error("Enter your email and password.");
+  if (!/^\S+@\S+\.\S+$/.test(email || "")) return toast.error("Enter a valid email address.");
+    if (!password) return toast.error("Enter your password.");
     setBusy(true);
     const { error } = await authClient.signIn.email({ email, password });
     setBusy(false);

@@ -14,7 +14,9 @@ export default function Register() {
   const submit = async (e) => {
     e.preventDefault();
     const { name, email, photoURL, password } = Object.fromEntries(new FormData(e.target));
-    if (!name.trim() || !email.trim()) return toast.error("Name and email are required.");
+  if (name.trim().length < 2) return toast.error("Name needs at least 2 characters.");
+    if (!/^\S+@\S+\.\S+$/.test(email.trim())) return toast.error("Enter a valid email address.");
+    if (photoURL.trim()) { try { new URL(photoURL.trim()); } catch { return toast.error("Enter a valid photo URL (https://...)."); } }
     const pErr = validatePassword(password);
     if (pErr) return toast.error(pErr);
     setBusy(true);

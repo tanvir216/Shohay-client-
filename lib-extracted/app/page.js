@@ -91,7 +91,7 @@ export default function Home() {
 
       <section className="mx-auto mt-20 max-w-7xl px-4">
         <div className="rounded-box bg-primary px-6 py-12 text-primary-content md:px-14">
-          <h2 className="font-display text-3xl font-bold md:text-4xl">Get the weekly event list</h2>
+        <h2 className="section-title">Get the weekly event list</h2>
           <p className="mt-2 max-w-xl opacity-90">One short email every Thursday with the drives happening near you.</p>
           <div className="mt-6 flex max-w-lg flex-col gap-3 sm:flex-row">
             <input type="email" placeholder="you@example.com" aria-label="Email address" className="input w-full text-base-content" />
