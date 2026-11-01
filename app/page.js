@@ -8,7 +8,12 @@ import {
   FiUserPlus,
   FiSmile,
   FiChevronRight,
+  FiMapPin,
+  FiHeart,
+  FiUsers,
+  FiCheckCircle,
 } from "react-icons/fi";
+
 import { api, EVENT_TYPES } from "@/lib/api";
 import { TYPE_META } from "@/lib/meta";
 import EventCard, { CardSkeletons } from "@/components/EventCard";
