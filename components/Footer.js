@@ -63,7 +63,7 @@ export default function Footer() {
         <div className="md:col-span-2">
           <h3 className="mb-3 text-lg font-semibold">Causes</h3>
           <ul className="space-y-2 opacity-80">
-            {Object.keys(TYPE_META)((t) => (
+           {Object.keys(TYPE_META).map((t) =>  (
               <li key={t}>
                 <Link
                   href={`/events?type=${encodeURIComponent(t)}`}
