@@ -180,6 +180,18 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="mx-auto max-w-7xl px-4 pt-20">
+        <h2 className="section-title">How Shohay helps</h2>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {features.map(([I, t, d]) => (
+            <div key={t} className="stitch h-full p-6">
+              <I className="text-3xl text-primary" />
+              <h3 className="mt-4 text-xl font-bold">{t}</h3>
+              <p className="mt-2 leading-relaxed opacity-80">{d}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <section className="mx-auto max-w-7xl px-4 pt-20">
         <h2 className="section-title">Choose how you want to help</h2>
