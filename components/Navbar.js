@@ -129,6 +129,9 @@ export default function Navbar() {
                   </li>
                   <li className="stitch-line mt-1" />
                   <li>
+                    <Link href="/profile">My profile</Link>
+                  </li>
+                  <li>
                     <Link href="/create-event">Create event</Link>
                   </li>
                   <li>
@@ -167,7 +170,11 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
-            {!user && (
+            {user ? (
+              <li>
+                <Link href="/profile">My profile</Link>
+              </li>
+            ) : (
               <li>
                 <Link href="/login">Log in</Link>
               </li>
