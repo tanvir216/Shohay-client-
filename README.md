@@ -79,23 +79,6 @@ npm install
 npm run dev
 ```
 
-Create `.env.local` in the client folder:
-
-```env
-MONGODB_URI=your_mongodb_connection_string
-BETTER_AUTH_SECRET=a_long_random_string
-BETTER_AUTH_URL=http://localhost:3000
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
-NEXT_PUBLIC_API_URL=http://localhost:5000
-```
-
-In the Google Cloud console, add this authorized redirect URI:
-
-```
-http://localhost:3000/api/auth/callback/google
-```
-
 ### 2. Server
 
 ```bash
@@ -108,7 +91,7 @@ Create `.env` in the server folder:
 ```env
 PORT=5000
 MONGODB_URI=your_mongodb_connection_string
-CLIENT_URL=http://localhost:3000
+
 ```
 
 `CLIENT_URL` is used for CORS and to find the JWKS endpoint, so it must be the address where the client runs. Several origins can be separated with commas, but the first one is used for JWKS.
