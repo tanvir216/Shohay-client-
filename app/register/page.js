@@ -3,15 +3,27 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import { authClient } from "@/lib/auth-client";
 import { validatePassword } from "@/lib/api";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 import AuthShell from "@/components/AuthShell";
 
 export default function Register() {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [show, setShow] = useState(false);
+  const [pw, setPw] = useState("");
+  const score = [
+    pw.length >= 6,
+    /[A-Z]/.test(pw),
+    /[a-z]/.test(pw),
+    pw.length >= 10,
+  ].filter(Boolean).length;
+  const rules = [
+    ["6+ characters", pw.length >= 6],
+    ["Uppercase letter", /[A-Z]/.test(pw)],
+    ["Lowercase letter", /[a-z]/.test(pw)],
+  ];
 
   const submit = async (e) => {
     e.preventDefault();
@@ -61,26 +73,38 @@ export default function Register() {
           aria-label="Photo URL"
           className="input input-bordered w-full"
         />
-        <div className="relative">
+        <label className="input input-bordered flex w-full items-center">
           <input
             name="password"
-            type={showPassword ? "text" : "password"}
+            type={show ? "text" : "password"}
+            value={pw}
+            onChange={(e) => setPw(e.target.value)}
             placeholder="Password"
             aria-label="Password"
-            className="input input-bordered w-full pr-12"
+            className="grow"
           />
           <button
             type="button"
-            onClick={() => setShowPassword((s) => !s)}
-            aria-label={showPassword ? "Hide password" : "Show password"}
-            className="absolute right-3 top-1/2 -translate-y-1/2 opacity-70 hover:opacity-100"
+            onClick={() => setShow(!show)}
+            aria-label={show ? "Hide password" : "Show password"}
+            className="opacity-70"
           >
-            {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+            {show ? <FiEyeOff /> : <FiEye />}
           </button>
-        </div>
-        <p className="text-sm opacity-70">
-          At least 6 characters, with one uppercase and one lowercase letter.
-        </p>
+        </label>
+        <progress
+          className={`progress w-full ${score >= 3 ? "progress-success" : "progress-warning"}`}
+          value={score}
+          max="4"
+          aria-label="Password strength"
+        />
+        <ul className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
+          {rules.map(([t, ok]) => (
+            <li key={t} className={ok ? "text-success" : "opacity-60"}>
+              {ok ? "✓" : "○"} {t}
+            </li>
+          ))}
+        </ul>
         <button className="btn btn-primary w-full" disabled={busy}>
           {busy ? (
             <span className="loading loading-spinner" />
